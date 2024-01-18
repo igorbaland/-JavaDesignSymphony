@@ -1,0 +1,23 @@
+Design
+  > reusable
+  > extensible
+object-oriented software
+
+Design patterns
+  elegant solutions to repeating problems
+    For example we want to repeat
+      undo function in our application. That's repeating problem in software design
+
+Gang of four design pattern include 23 design patterns in three categories:
+  > Creational
+    are all about different ways to create object structural
+
+  > Structural
+    relationship between these objects
+
+  > Behavioural
+    interaction or communication between these objects
+
+By the way these design patterns don't represent  all the patterns in the world. There are many unofficial and
+undocumented patterns out there that we might find useful in  certain situations. But  these 23 patterns are the classic
+ones that every software engineer must  understand.
