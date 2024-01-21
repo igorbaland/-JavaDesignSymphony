@@ -1,0 +1,10 @@
+Difference between memento and command pattern when it comes to undo operations?
+  Memento pattern
+    we store the changes in the state of the object, so we store multiple snapshots over time. Sometimes storing  these
+    snapshots can be expensive. For example, let's say we are building a video editor. A video is a large file, so
+    storing multiple snapshots of a video is going to be very expensive, it's going to waste a lot of memory. In those
+    situations, it is better to use
+      Command pattern
+        because every command knows how to undo itself. So we don't have to store multiple snapshots of an object. For
+        example, resize operation. If the user resize the video, all we have to store is the original dimension of the
+        video, not the entire snapshot of the video object, we only store the previous dimension.
