@@ -1,4 +1,4 @@
-package UltimateDesignPatterns.observer.stock.frontend;
+package UltimateDesignPatterns.observer.stock;
 
 import UltimateDesignPatterns.observer.stock.Observer;
 import UltimateDesignPatterns.observer.stock.Stock;
