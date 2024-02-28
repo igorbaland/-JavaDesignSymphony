@@ -1,0 +1,64 @@
+Problems:
+    1. violence the open closed principle
+        every time we want to support a new Operation
+            we have to change all the types in the structure
+
+    2. logic for each operation is spread over different classes
+        highlight() and plaintext() in
+            class headingNode
+            class AnchorNode
+                the logic for each operation is not a single place
+
+Solve this problems
+    we need to represent
+        interface Operation
+            apply(heading)
+            apply(anchor)
+                method overloading
+
+        HighlightOperation implements
+                                        Operation
+        PlainTextOperation implements
+
+            with this structure all the logic for a given operation would be in a single place
+
+            the other benefit of this structure follows
+                the open closed principle
+                    if tomorrow we want to support a new operation
+                        we simply create a new class
+                            that implements the operation interface
+
+We should use this solution only for object structure is stable. Currently we have two types of nodes here.
+    Heading
+    Anchor
+
+    That is the reason why - in our operation interface we have two apply methods.
+
+    If our object structure is not stable and we are going  to end up with new types quite often, that every time we
+    introduce a new type we have
+        to modify the operation interface as all the classes that implement this interface.
+
+    We should use this approach if our object structure is stable, but we want to support new operations frequently.
+    Html document is a great example, because in html we don't have unlimited types of nodes, we have about 20-30 types
+    of nodes. But quite often, we need to support new types of operations
+
+    interface HtmlNode
+        execute(operation)
+            interface Operation
+                apply(heading)
+                apply(anchor)
+
+    HeadingNode
+        operation.apply(this);#this represents HeadingNode object
+                                        implements HtmlNode
+    AnchorNode
+        operation.apply(this);
+
+Where does the name come from?
+Gang of four
+    interface Operation ->      visitor
+    accept(visitor)
+                                    visit(ConcreteClassA)
+                                    visit(ConcreteClassB)
+
+

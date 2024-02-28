@@ -1,0 +1,50 @@
+visitor pattern
+	this pattern allow us to add a new operation
+		to an object structure without modifying it.
+
+2 nodes, 
+	heading
+	anchor 
+		<h1>Heading<h1>
+		<a href="http://">Click Me </a>
+		
+let's say we want to build an HTML editor like this
+
+visitor
+	interface HtmlNode
+		void highlight();
+
+	class HeadingNode implements HtmlNode
+		void highlight
+
+	class AnchorNode implements HtmlNode
+		void highlight
+
+	class HtmlDocument
+		list<HtmlNode> nodes = new ArrayList<>();
+
+		public void add(HtmlNode node);
+
+		public void highlight()
+			for (var node : nodes)
+				node.highlight
+
+	class main
+		var document = new HtmlDocument();
+		document.add(new HeadingNode());
+		document.add(new AnchorNode());
+		document.highlight()
+
+			tomorrow introduce a new operation
+				convert htmlDocument to plainText
+
+
+			we have to go to htmlNode interface
+				String plainText()
+
+			and now we have to implement in our project structure
+
+				this violates the open closed principle
+
+
+
