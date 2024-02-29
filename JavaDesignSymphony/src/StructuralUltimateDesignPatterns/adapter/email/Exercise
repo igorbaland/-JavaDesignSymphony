@@ -1,0 +1,8 @@
+Email client like Outlook
+    different mail servers
+        Gmail
+        Yahoo..
+interface EmailProvider
+    class EmailClient
+        talks
+            EmailProvider

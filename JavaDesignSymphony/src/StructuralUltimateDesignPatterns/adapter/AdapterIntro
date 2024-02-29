@@ -1,0 +1,28 @@
+We use this pattern to convert
+    the interface of a class/object to a different form
+
+We want to build one of those mobile apps for our playing pretty filters to our photos
+    we can capture or load the photo
+        and then apply various filters to it
+
+
+_____
+ImageView   ---dependent--->    Interface Filter
+apply(Filter)                   apply(Image)
+
+//third party libraries         //concrete implementation
+Caramel                         VividFilter
+
+we can't not use the Caramel Class
+    because concrete class/3rd party libraries
+        doesn't implements this interface
+            this is the class that we imported from a 3rd party library
+                We cannot change the source code
+                We cannot have it implement the filter interface
+
+Solve
+    create CaramelFilter        //adapter
+       composition
+        Caramel             //adoptee
+
+
