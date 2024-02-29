@@ -1,0 +1,22 @@
+To treats these types the same way, we need to extract what is common between these two types´and put it inside
+a base class or an interface
+
+common
+Shape and group has
+    function
+        render
+
+We need to introduce
+
+    Shape
+                    interface Component
+     --->               render()
+
+    Group
+        With this structure instead of maintaining a list of object instances
+            we can store a list of components
+                List<Component>
+
+                add(cmp: Component)
+
+We use this pattern, whenever we want represent hierarchy and we want to treat objects in this the same way
