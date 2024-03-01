@@ -1,0 +1,12 @@
+We use this pattern to provide a simple interface
+    to a complex system.
+
+Real Example
+    Let's imagine we are going to build mobile app.
+        And as part of this app,
+            we want to send and push notifications to our users.
+We are going to add a bunch of classes for
+    //connect() -> Connection
+        //authenticate(appID, key) -> AuthToken
+        //send(authToken, message, targetDevice)
+        //conn.disconnect()

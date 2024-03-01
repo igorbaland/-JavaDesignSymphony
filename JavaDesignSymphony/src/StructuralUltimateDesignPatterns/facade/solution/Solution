@@ -1,0 +1,46 @@
+Current structure
+
+                        Main
+Message     NotificationServer      AuthToken       Connection
+
+We a main class that is dependent on these four classes for sending a notification
+There are two problems with this structure
+    1. Every time we want to send a notification, we have to follow the number of steps.
+    2. Coupling
+        Our main class is coupled/dependent on four classes for sending notification
+
+        What if we have 10 classes. Each of those 10 classes should be also coupled to these four classes.
+        That is a lot of coupling. and that means, if any of this classes changes in the future, several classes in our
+        application might be affected. We want to reduce coupling.
+
+        And that's the problem that the facade pattern aims to solve.
+
+We can introduce a new class called
+    NotificationService
+        //with a signle method
+        send(msg, target)
+
+        Our notificationService is going to dependent or coupled to these four classes for sending a notification. All
+        that complexity, all these steps for sending a notification will be implemented in the send method of this
+        class.
+            With this structure our main class doesn't have to be a coupled to these four four classes. It can simply
+            talk to a notificationService.
+
+            Class1          Main        Class2
+                    NotificationService
+
+                    If we have many other classes in our application where we want to send a notification, those classes
+                    should  only coupled to a single class. That is notificationService.
+
+This is how we can reduce coupling
+With this structure, if any of those four classes changes in the future,
+    we make the necessary changes in the
+        notificationService
+
+        None of these classes in our application will be affected and this what we call
+            facade pattern
+
+Facade means front or face. In this structure, this notificationService is acting as a facade, or front of our
+notification system. These classes don't need to talk to those four classes to send a notification, they can simply to
+talk to this notificationService and this class will forward that request to those individual four classes.
+
