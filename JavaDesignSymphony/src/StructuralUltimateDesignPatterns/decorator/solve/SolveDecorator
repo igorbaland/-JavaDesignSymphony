@@ -1,0 +1,55 @@
+Current structure where we are using
+    inheritance
+        to support various ways of
+            storing data in the cloud.
+
+            ===Inheritance===
+                //Base class
+                CloudStream
+//Subclasses
+Encrypted       Compressed      EncryptedAndCompressed
+
+This approach is not very flexible. Is not very maintainable. Because if tomorrow we introduce
+    a new feature like logging
+        we have to create a four new classes to support storing the data and logging operation at the same time.
+
+
+                Favor composition
+                over inheritance
+    It doesn't mean inheritance is bad, it's definitely a great solution to a lot of problems.
+        But it's not a right solution to this problem.
+
+
+    ===Composition===
+        Interface Stream
+            write(data)
+
+CloudStream         Encrypted
+    write(data)         write(data)
+
+How is different from inheritance?
+    Here we are using inheritance
+        These classes (encrypt., compressed..) are inheriting the code in their base class.
+            Let's say, in encrypted class
+                1. we aare going to encrypt the data
+                2. we are going to call the right method of the base class
+                    to store that data in the cloud.
+
+    In contrast
+        We are not going the write method of our base class. There is no base base class
+
+        How we are going to write the data to the cloud?
+            For example in our Encrypted class
+                we can have a private field of type Stream
+                    So we are going have a composition relationship and with this, our write method is going to look
+                    like this
+
+                    write(data)
+                        encrypted = encrypted(data);
+                        stream.write(encrypted);
+                            call the write method of this stream object. we don't care
+                                what that stream is, we simply talk to this Stream interface
+
+Decorator
+    because it's decorating CloudStream object, decorate this write operation with some additional behavior. In our case
+        encryption

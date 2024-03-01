@@ -1,0 +1,25 @@
+We use this pattern to
+    add additional behavior to an object.
+
+Real example
+    Let's imagine we just got hired in a startup company
+        that is going to sell
+            cloud hosting services.
+    Our job is to implement a class for storing data in the cloud.
+        see in cloudStream class
+
+
+Decorator pattern
+    we can add additional behavior to an object. In our main method we can create a regular cloud stream object.
+    and then
+        we can decorate it with additional behavior. For example
+            compression
+            encryption
+            logging...
+
+            We can decorate this object with different behaviors.
+
+
+
+
+
