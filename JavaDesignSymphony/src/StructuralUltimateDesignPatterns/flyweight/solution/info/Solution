@@ -1,0 +1,58 @@
+Current structure of Point.java with 4 fields. The problem with this structure is that it can potentially take a
+significant amount of memory and that is because of
+    field icon
+
+    Let's say we have 100 points of interest. All these points are cafes. But this structure will end up storing the
+    cafe icon 100 times. That is unnecessary.
+        Ideally, we should store the cafe icon in a single place in memory and share it across all points of interest
+        that are cafes.
+
+        We are going to take out these two fields
+            type
+            icon
+                Because these fields are highly related. The icon is dependent on the type. It's not dependent on the
+                    X,Y coordinates.
+
+Point           PointIcon
+x      <>--->   type: PointType
+y               icon: byte[]
+
+With this structure we have a composition relationship between the point and the pointIcon. Each point has an icon.
+Now with this structure, we can store this icon in a single place and reuse it across multiple point object.
+
+How we can ensure that we are storing a given icon, like a cafe icon,  in a single place in memory?
+    We shouldn't directly create pointIcon objects
+        we should introduce a new class called
+            PointIconFactory
+                As the name implies, this class like a factory.
+                    It's responsible for producing objects.
+
+
+                    PointIconFactory
+                        getPointIcon(type):PointIcon
+
+                    Factory, give me an icon for cafes. If this factoryObject has a cafe icon, it will simply return it.
+                    Otherwise, it's going to create it, store it in some kind of cache or pool and the return it to us.
+
+                    So with this class, we can ensure that we are storing a given icon like the cafe icon in a single
+                    place in memory.
+
+                    Once again , we are going to have a composition relationship here. Inside this factory object, we
+                    are going to have zero or more point icon objects.
+
+                    Finally, in our point service
+                        that is where we get all the points
+                            we are going to use this factory to create point objects. So earlier  inside PointService
+                                we directly created a point object. We pass
+                                    x, y, type, icon(null)
+
+                        Now with this structure, we are going to use this factory to get the icon for a given point and
+                        then construct a point object.
+
+
+            Flyweight
+The object
+    that we can share
+
+    In this structure the pointIcon is a flyweight
+        It's an object that we can share in different context

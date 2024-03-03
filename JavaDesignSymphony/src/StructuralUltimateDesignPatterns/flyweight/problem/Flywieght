@@ -1,0 +1,33 @@
+We use this pattern in applications where we have a large number of objects and these objects take a significant amount
+of memory. With the flyweight pattern, we can reduce the amount memory consumed by these objects
+
+Real example
+ We are going to build a mobile app like Google map. As a part of rendering a map, we need to show various points
+ of interest, such as cafes, restaurants, hospitals, school...
+
+Problem
+    Let#s say we built this application and deployed. Later on, we figured out that on some mobile devices, it doesn't
+    perform very well.  Perhaps the application freezes or crashes because it runs out of memory. We start investigating
+    the problem.
+
+    We figured out that this pont class consumes a fair amount of memory.
+        In the real mapping application, we don't have a single point, we could have hundreds or thousands of points of
+        interest.
+
+        That is the reason why uncertain mobile devices with limited space this application crashes.
+
+            private int x;      //4 bytes
+            private int y;      //4 bytes
+            private PointType type;     //4 bytes
+            private byte[] icon;        //20 kb of memories
+                With this structure, each point object is going to take just over 20 kb of memory.
+                    If we have 1000 points to render, we are going to need 20 megabytes of space.
+
+                    That is a fair amount of memory for a mobile device. Not every mobile is going to have 20 megabytes
+                    of free memory.
+                    Quite often, people don't close the apps that they open. So all these apps are running in the
+                    background and taking some amount of memory.
+
+Flyweight pattern
+    This is where we use the flyweight pattern. With flyweight, we can reduce the amount of memory that our application
+    uses.
