@@ -1,0 +1,41 @@
+Real problem
+    let's say we are going to build a universal remote control app. With this mobile app, we are going be able to
+    control various brands
+        TV and potentially other devices in the future.
+            see Remote control
+
+
+At the top of our Hierarchy, we are going to have a class called
+    RemoteControl
+        AdvancedRemoteControl
+
+
+    Now we should create two classes for a Sony TV.
+    RemoteControl
+        SonyRemoteControl
+        AdvancedRemoteControl
+            SonyAdvancedControl
+
+    Problem
+        let's say tomorrow we want to support a new Tv brands like Samsung. To do that we have to create two news
+        classes
+
+    RemoteControl
+        SamsungRemoteControl
+        SonyRemoteControl
+        AdvancedRemoteControl
+            SamsungRemoteControl
+            SonyAdvancedControl
+
+            Currently we have 2 types of remoteControls. Every time we want to support a new TV brand, we have to create
+            two new classes. If tomorrow we introduce a new type of remote control like movieRemote control, for
+            supporting every a new brand, we would have to create three new classes. So in reality, as we support more
+            types of the remote controls and more tv brands
+                our hierarchy is going to get more complex. Every time we want to support a new type of remote control
+                or a new TV brand. We have to create several new classes.
+
+                    Our hierarchy is going to explode with to many classes.
+
+                    This is where we use
+                        the bridge pattern. With the bridge pattern, we can build a simple, yet flexible hierarchy
+

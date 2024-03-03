@@ -1,0 +1,39 @@
+Current structure
+
+                                RemoteControl
+        AdvancedRemote                              SonyRemote      SamsungRemote
+SonyAdvanced    SamsungAdvanced
+
+The problem with this structure
+    is that it's very inflexible. If tomorrow we want to support a new type of remoteControl
+
+    2 dimensions
+        1. Feature
+
+        2. Implementation
+            which is all about implementation or TV brands.
+
+    To simplify this hierarchy we need to break it down into half.
+        1. Side: Feature, all about features of the remoteControl
+            RemoteControl
+                turnOn()
+            AdvancedRemote
+        2. Side: Implementation
+            Device          //for clarity, let' change the name to device
+                turnOn()
+            SonyTv          //...to SonyTV
+
+                Now we have two completely independent hierarchies
+
+                RemoteControl       <>---composition relationship--->   Device
+
+
+Bridge pattern
+    The reason this pattern is called the bridge pattern. Because of the composite relationship between RemoteControl and
+    device
+        This relationship is acting as a bridge. It connects two completely independent hierarchies. With the bridge
+        pattern, we can build flexible hierarchies that can grow independent of each other.
+
+        With the bridge pattern we can split
+            this ugly, complex hierarchy into two separate hierarchies that can gow independently
+                And this make our application design more extensible and maintainable.
