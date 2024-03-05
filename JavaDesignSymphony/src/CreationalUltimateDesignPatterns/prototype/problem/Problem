@@ -1,0 +1,25 @@
+We use this pattern when we need
+    to create a new object
+        by copying an existing object.
+
+Real Scenario
+    PowerPoint/Keynote
+        add a shape
+            duplicate a shape
+
+Problems with this implementation
+    1. violates the open closed principle
+        should be open for extension - closed for modification
+            with this implementation, every time we want to support a new kind of shape, we have come back and modify
+            this method, we need another if block to check/ to see if our component is that new kind of ship
+    2. coupling between context menu and circle.
+        Our context menu has to know about all kinds of shapes.
+            The more shapes we support, the more coupling have between these classes
+    3. at the time of writing code, our contextMenu has to know about all shapes that we support
+        What if we want to make this application extensible such that other people can build plugins for it?
+            They can't define a new kinds of components that can be added to a document.
+                We cannot achieve that with this implementation, because at the time of writing code or at compile time
+                our contextMenu has to know about all types of component that we support.
+
+
+

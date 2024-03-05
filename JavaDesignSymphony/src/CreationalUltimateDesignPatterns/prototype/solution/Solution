@@ -1,0 +1,29 @@
+Current structure
+    we have the component interface
+        which is implemented by the
+            Circle
+                The contextMenu,
+                    which is dependent on the circle. ----> //dependent
+
+
+Solve this problem
+    to move the logic or the responsibility for duplicating a circle from contextMenu to circle
+        Because this is where we have all the information about circle.
+            We know about its radius, background, color, header and so on.
+
+            This is the right place assign responsibility
+
+            Circle
+                we are going to define clone() method,
+                    which knows how to clone a circle. But cloning is not limited to circles. In fact, all kinds of
+                    components should be cloneable.
+
+                    Component
+                    we are gonna add clone() to the component interface as well.
+
+                        With this, we can decouple the ContextMenu from circle and have it talked to the component
+                        interface.
+
+                        This is what we call
+                            prototype pattern
+
