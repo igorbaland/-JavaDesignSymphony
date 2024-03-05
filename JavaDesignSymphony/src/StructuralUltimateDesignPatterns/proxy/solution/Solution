@@ -1,0 +1,83 @@
+Current Structure
+        Library     ---dependent--->    on the Ebook class.
+
+    The problem we have here is that creating this ebook objects is costly. Every time we create an Ebook object,
+    we have to read the Ebook file from the disk and load it into memory.
+
+    To solve this problem, we need to come up with a structure like this
+
+    Library     --->    EbookProxy      --->        Ebook
+
+        This proxy class acts
+            as a proxy or an agent, and sits between
+                the library and ebook classes
+
+        In this class we can write code and create this ebook on demand only when we need to show it.
+            This is what we call
+                lazy initialization or lazy loading. It's a technique that is used in a lot of frameworks, like
+                hibernate or Entity Framework uses this technique to load objects from the database
+                    on demand
+                        when we need to work with those objects.
+
+Proxy.png uml
+We need to introduce an interface called Ebook
+    and here we are going to have all the operations that we need in an Ebook class. Then we are going to provide two
+    different implementations of this interface. We are going to have this
+        RealEbook
+            which look exactly like our ebook class in the problem package. This is where we are going to get the
+                Filename in the constructor and read the Ebook file from the disk and load it into memory.
+
+        EbookProxy
+            In this class we are going to have a private field of type RealEbook.
+
+    Here is the catch
+        if we are not going to initialize that field ahead of of time, so we are going to declare that field and
+        initially, it's going to be null. Now in our show method, we are going to have code like this.
+        show()
+            if (ebook == null)          //private field of type RealEbook, if is null than we are going to create it
+                                        //that is where we are going to read that Ebook file from the disk.
+                ebook = new Ebook();
+            ebook.show();
+            With this structure, we are going to load this ebook, only when we need to show it, not ahead of time. When
+            our application launches, we are not going to load 10s or hundreds of ebooks, we are only going to list them
+            And we get this information from our database, when a user tries to open an Ebook, this is the moment when
+            we read the Ebook file from the disk and load it into memory.
+
+    Our library class
+        will be dependent on this Ebook interface, we can give it different implementations of this interface. This is
+            how we can confirm to the
+                Open Closed principle
+            Today, we are providing this ebookProxy,
+                which give us lazy initialization
+                Tomorrow, we can provide a different proxy implementation that performs some kind of authorization.
+                    For example, if you rent ebooks, this class is going check the rental period. And if it's expired,
+                    it's going to prevent us from accessing that ebook.
+                    We can also create  another proxy implementation that performs logging. Every time we open an Ebook,
+                    this class is going to lock the operation
+
+This is what we call the proxy pattern. It's a very powerful pattern and it's used a lot of application ad frameworks
+
+classic proxy pattern in the Gang of Four book (ProxyGof.png)
+    We have a client class
+        is dependent on this subject interface.
+    The Client is like a library
+        and the subject like our ebook
+
+        We have two different implementations of the subject.
+            We have a realSubject and and a Proxy
+                In the proxy class
+                    we maintain a reference to this RealSubject
+                        In this request method
+                            we simply forward this operation to realSubject of requests
+
+            In our implementation, we had some code before calling the ebook that show method
+                because we wanted to have lazy initialization, but that is not necessary as part of this pattern.
+                The whole point of this pattern is that this proxy is an object that looks like a real subject because
+                both these classes implement the same interface. But in this proxy , we are basically forwarding this
+                operation to the real subject. That is the essence of the proxy or the proxy pattern.
+
+            Now in request method we can perform different kinds of tasks. For example, we can perform logging,
+                authorization, lazy initialization and so on. That is entirely up to us and it's dependent on the kind
+                of problem we are trying to solve.
+
+

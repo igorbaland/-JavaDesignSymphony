@@ -1,0 +1,30 @@
+The proxy pattern
+    as the name implies, allows to create a proxy or an agent for a real object.
+        If we want to talk an object, we will talk to it through its proxy or agent. This agent takes our message and
+        forwards it to the target object into the target object.
+
+                            Agent
+            Client  --->    Proxy   --->    Target
+
+        This agent take our message and forwards it to the target object.
+
+What is the benefit of this?
+    In this proxy, we can perform some interesting tasks such as
+        logging
+        access
+        control
+        caching and so on.
+
+Real example
+    Let's imagine we are gonna building an application for reading ebooks. In this application, we have a library. In
+    this library, we have all the ebooks that have bought.
+
+The problem with this implementation
+    Currently, we only have three ebooks in our library. What if we have 10s or hundreds of ebooks that our application
+    loads, we have to load all these ebooks from the disk and store them in memory.
+
+    Now as we can see, the user is not going to open every single ebook that is loaded in memory. In this demo, we are
+    only interested in "a" book, but we are loading these additional ebooks in the memory. This is where we can use the
+    proxy pattern. As we can see creating an ebook  object is a little bit costly, because we have to read it from the
+    disk an store it in the memory. With this proxy we cen create an object that simulates a real ebook, but it's going
+    to load this  ebook on demand, only when we need it.
