@@ -1,0 +1,28 @@
+Singleton pattern
+    As the name implies
+        we use this pattern in situations where we want to have only a single interface of a class
+
+        As an analogy, think of washing machine that is shared by multiple residents in an apartment complex.
+
+But why do we ever need to have a single instance of a class?
+
+    Real example
+        in our Demo
+
+        ConfigManager manager = new ConfigManager();
+                manager.set("name", "Mustermann");
+
+                ConfigManager other = new ConfigManager();
+
+                    //We ask it other configManager for the name setting
+
+                    System.out.println(other.get("name"));
+                                        Output: null
+
+                    //We are not get Mustermann, we get null, because this setting is stored in the firstManagerObject
+                    This is an example where we need some state or some data is stored
+                        in a single place. We cannot have multiple places for storing or application settings. This is
+                        where we use the
+                            Singelton pattern
+
+

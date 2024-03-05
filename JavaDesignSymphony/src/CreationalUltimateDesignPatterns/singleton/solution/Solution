@@ -1,0 +1,38 @@
+Solve this problem using a singleton pattern.
+    here is our
+        ConfigManager
+            with two operations
+                get()
+                set()
+        To ensure that we have only a single instance of this class
+            1. We have to make the Constructor of this class private
+                With this, we are not going be able to use the new operation with this class.
+                    -ConfigManager()        //-, private
+                We are not be able to access it from outside of this class.
+            2. We need to make this class responsible for creating that single instance.
+                We are going to define
+                    a private field call instance
+                        which holds an instance of the configManager class
+                            Note:
+                            that instance, as an underlined,
+                                that means this field should be declared as a static
+                                    It's going be accessible through the configManager class itself.
+                                        ConfigManager
+                                            get()
+                                            set()
+                                            -configManager()
+                                            -instance()
+            3. Finally, we need an operation or a method for a getting that single instance. Of course this operation
+                also be static, because static fields are only visible to a static methods
+
+This is what we call
+    the singleton pattern
+        with this pattern, we can ensure that a class has a single instance.
+            If we look at the classic structure of this pattern in the Gang of Four book
+
+            Singleton
+
+            -instance: Singleton
+
+            -Singleton()
+            getInstance()
