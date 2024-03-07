@@ -1,0 +1,36 @@
+Current structure
+    Controller
+        render()      ----- var engine = new MatchViewEngine();
+                            engine.render();
+
+        What if we are taking a first line and move it to a separate line
+
+        Controller
+            render()                ---var engine = createViewEngine, return new MatchaViewEngine();
+            createViewEngine()      /
+
+            With this structure we allow other developers, to extend our controller and override getViewEngineMethod().
+                Override implementation can return
+                    a new SharpViewEngine()
+
+                    This is what we call
+                        The Factory Method pattern
+
+                    Because in this structure, we create an engineMethod
+                        is acting at the factory, it returns a new Object
+
+Classic definition
+    Defer the creation of an object to subclass
+
+    With this new structure we allows
+        subclasses to create a different kind of new engines
+
+        Factory method pattern is one of the most misunderstood pattern. A lot of people don't realize that the factory
+        method pattern realize of
+            inheritance
+                Using inheritance and polymorphism we adding flexibility to this design. We allow other people to change
+                the type of new engine
+        Static
+            is not a right way to implement factory method pattern. Because with static structure. We won't be able
+            to change the implementation of the create new engine method
+                because we can not override static method in java.

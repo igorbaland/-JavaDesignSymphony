@@ -1,0 +1,27 @@
+Factory Method Pattern
+    The classic definition of this pattern says that we should use it to defer the creation on an object to subclasses.
+
+Let's say we want to build
+    Web Application Framework
+        Other developers can use our framework to build web applications. There are so many frameworks out there, for
+        example,
+            JavaScript developers use express.js
+            C# -> ASP.Net MVC or cor
+            Java -> spring or spring-boot
+            Python -> Django
+
+    Let's say we are gonna to build a new shiny framework called matcha. All there frameworks have a concept of a
+    template or a view, which is an HTML file with some logic for rendering data. For example,
+        <h1>Products</h1>
+        {% for product in products %}
+        <p>{{ product.title }}</p>
+
+Problem with a controller
+    tightly coupled to matchaViewEngine
+        What if we want allow others using our framework to use their own ViewEngine. Perhaps a new engine that faster
+        and supports a better templating language than what we have introduced. In our current implementation - it is
+        not possible
+            1. to extract an interface from this  class and pass it  as an argument to the render() method
+                This solves our problem, but introduces a new kind of problem.
+                    It makes it harder for other people to use our framework
+
