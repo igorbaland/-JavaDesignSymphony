@@ -1,0 +1,30 @@
+The abstract factory pattern
+    provide an interface
+        for creating families of related objects
+
+Let's imagine we want to build a GUI framework
+    Widgets
+        button
+        textBox
+        Drop-down list
+
+    Themes
+        material design, which is what we see in android or other google products
+        ant
+
+
+            Here we have families of related objects, we have one family on
+                widgets work (material design) and another
+                ant
+
+                This is where we use the abstract factory pattern.
+
+Problems with this implementation
+    1. Violates the open closed principle. If tomorrow we decide to support a new kind of theme, we have to come back
+        to our contactForm and modify render() method
+    2. We have to be careful about the type of Classes we are using in ContactForm.render()
+
+        This is where we use the
+            abstract factory pattern
+                provides an interface for creating families of related objects
+

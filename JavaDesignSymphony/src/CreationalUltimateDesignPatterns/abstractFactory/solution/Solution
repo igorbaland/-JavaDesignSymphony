@@ -1,0 +1,25 @@
+The first thing we need to understand
+    FACTORY METHOD is a method
+
+    ABSTRACT FACTORY is an abstraction (interface), it's an interface to creating
+
+    In our project we are gonna introduce
+        WidgetFactory
+            createButton()
+            createTextBox()
+
+            Each method is a factory method, where are the widgetFactory itself is an abstraction, an interface
+
+            We can create a concrete implementations
+                materialFactory
+                    only knows how to create material design/widget
+                antFactory
+
+
+This what we call the
+    abstract design pattern
+        We have an abstractFactory
+            with methods for creating
+                different kind of products
+
+                All these products are in the same family
