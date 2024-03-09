@@ -1,0 +1,41 @@
+The intent of the builder pattern
+    is to separate the construction of an object from its representation. In this context,
+        construction is about the exporting logic, the  logic for constructing in a presentation.
+            Representation on the other hand,
+                is the target format. In this context, we want to use the build pattern to separate the  exporting
+                logic from the presentation format, because the same exporting logic applies to different presentation
+                formats.
+
+Solution
+    We are gonna to define an interface
+                        PresentationBuilder
+                            addSlide()
+                            //concrete implementations
+            PDFDocumentBuilder                  MovieBuilder
+                addSlide()                          addSlide()
+                            //our implementations are different
+                pdfDocument.addPage()               movie.addFrame()
+
+                            //add presentation class talk to the interface presentationBuilder
+                                Presentation
+                                    export()
+                                        for (Slide slide : slides)
+                                            builder.addSlide(slide);
+
+                            //our presentation class is not going be coupled to concrete implementations, like
+                                PDFDocumentBuilder
+                                MovieBuilder
+
+In this solution, the logic that we have in the export method is
+    the construction logic,
+        that is the logic for constructing a presentation,
+            where is the logic that we have in our builders
+                is the representation logic
+
+We need to add get() methods in our concrete classes
+    Once we build a PDFDocument, we need to be able to access it
+        getPdfDocument();
+        getMovie();
+
+
+

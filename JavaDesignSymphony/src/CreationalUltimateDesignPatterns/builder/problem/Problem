@@ -1,0 +1,30 @@
+To separate the construction of an object
+    from it's representation
+
+Real example
+    PowerPoint/KeyNote
+        Export or presentation in different formats
+            PDF
+            PowerPoint
+            Movie and so on
+
+            Presentation -> export()
+                Problems
+                    1. Violates the open closed principle. If tomorrow we want to support a new presentation format, we
+                    have to come back and modify this method
+                    2. tight coupling between the presentation class and these other classes like PDF, Movie and so on.
+                    As we support more presentation format in - our coupling increases.
+                    3. our presentation class should also have the knowledge of the structure of the classes:
+                        PDF document have pages
+                        Movies have frames
+
+                        As we support more presentationFormats, this class is going to get bloated with so much
+                        knowledge, so much knowledge  that really belong somewhere else.
+                    4. Problem in this method is the repetition in our exporting logic. For each presentation format
+                    we are iterating over our slides, getting the text on the slide and adding something to the target
+                    object. If tomorrow we decide  to add a corporate message here, let's say the corporate message is
+                    going to be  at the front  of our target presentation, then we will have to make multiple changes in
+                    this code.
+                        pdf.addPage("Copyright");
+
+                        movie.addFrame("Copyright");
